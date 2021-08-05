@@ -1,0 +1,45 @@
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+# Workspaces
+bspc monitor DVI-I-0 -d 1
+bspc monitor HDMI-0 -d 2 3 4 5 6 7 8
+
+# Visual Settings
+bspc config border_width            2
+bspc config window_gap              10
+bspc config top_padding 		    0
+
+bspc config focused_border_color    "#F9D976"
+bspc config split_ratio             0.52
+bspc config borderless_monocle      true
+bspc config gapless_monocle         true
+bspc config pointer_motion_interval 40
+bspc config ignore_ewmh_focus       true
+
+# Window Rules
+bspc rule -a Discord desktop='^1' follow=on
+bspc rule -a Caprine desktop='^2' follow=on
+bspc rule -a Sublime_text desktop='^4' follow=on
+bspc rule -a Lutris desktop='^5' follow=on
+bspc rule -a Brave-browser desktop='^3' follow=on
+# bspc rule -a Spotify desktop='^6' follow=on
+
+# Game Window Rules
+bspc rule -a isaac-ng.exe state=floating center=true
+bspc rule -a leagueclientux.exe state=pseudo_tiled center=true
+
+# Autostart
+xinput set-prop "SteelSeries SteelSeries Rival 100 Gaming Mouse" "Coordinate Transformation Matrix" 0.5 0 0 0 0.5 0 0 0 1 &
+xrandr --output HDMI-0 --primary &
+picom &
+nitrogen --restore &
+discord --start-minimized &
+plank &
+
+if ! pgrep "polybar" > /dev/null 2>&1 ; then
+    killall polybar
+else
+    polybar top -r &
+fi

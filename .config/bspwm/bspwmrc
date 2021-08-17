@@ -1,5 +1,8 @@
 #! /bin/sh
 
+# Autostart script
+$HOME/.config/bspwm/autostart.sh
+
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Workspaces
@@ -21,25 +24,24 @@ bspc config ignore_ewmh_focus       true
 # Window Rules
 bspc rule -a Discord desktop='^1' follow=on
 bspc rule -a Caprine desktop='^2' follow=on
-bspc rule -a Sublime_text desktop='^4' follow=on
+bspc rule -a subl desktop='^4' follow=on
 bspc rule -a Lutris desktop='^5' follow=on
 bspc rule -a Brave-browser desktop='^3' follow=on
-# bspc rule -a Spotify desktop='^6' follow=on
+bspc rule -a timeshift-gtk state=floating follow=on
+bspc rule -a spotify desktop='^6' follow=on
+bspc rule -a Steam desktop='^5' follow=on
+
+#fix for moving spotify to specific workspace
+bspc config external_rules_command $HOME/.config/bspwm/scripts/external_rules_command
 
 # Game Window Rules
-bspc rule -a isaac-ng.exe state=floating center=true
+bspc rule -a isaac-ng.exe state=pseudo_tiled center=true
+bspc rule -a steam_app_250900 state=pseudo_tiled center=true #Binding of Isaac
+
 bspc rule -a leagueclientux.exe state=pseudo_tiled center=true
 
-# Autostart
-xinput set-prop "SteelSeries SteelSeries Rival 100 Gaming Mouse" "Coordinate Transformation Matrix" 0.5 0 0 0 0.5 0 0 0 1 &
-xrandr --output HDMI-0 --primary &
-picom &
-nitrogen --restore &
-discord --start-minimized &
-plank &
-
-if ! pgrep "polybar" > /dev/null 2>&1 ; then
-    killall polybar
-else
-    polybar top -r &
-fi
+### External rules from Arcolinux config ###
+## Pseudo automatic mode: always splits focused window when opening new window
+#bspc config external_rules_command ~/.config/bspwm/scripts/pseudo_automatic_mode
+## Adjust new window: splits biggest windows to keep windows about the same size
+#bspc config external_rules_command ~/.config/bspwm/scripts/adjust-new-window

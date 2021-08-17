@@ -1,0 +1,4 @@
+configuration {
+modi: "window,drun,ssh";
+}
+@import "/home/zim/.dotfiles/.config/rofi/themes/modern.rasi"

@@ -1,18 +1,18 @@
 # Zimmy's Arch Dotfiles
-**This is a personal repo of my dotfiles so do not expect it to work perfectly on your pc**. If you encounter anny issues, i will not be responsible for any damage
+**This is a personal repo of my dotfiles so do not expect it to work perfectly on your pc**. If you encounter any issues, i will not be responsible for any damage
 
 
 This Repo contains configs to:
 - Polybar
 - BSPWM & SXHKD
-- AwesomeWM (for now its just forked from ArcoLinux config files)
+- AwesomeWM (for now It's just forked from ArcoLinux config files)
 - Qtile (also forked from ArcoLinux config files)
 - i3 (i forgot what was in there)
 - Picom
 - .xinitrc
 - .bashrc
 ## Installation
-I have not made an instalation script yet, but i highly reccomend you link the files to your desired directory using
+I have not made an installation script yet, but i highly recommend you link the files to your desired directory using
 ```sh
 ln -sf /dir1 /dir2
 ```

@@ -1,0 +1,6 @@
+scripts/* 
+!scripts/eyecandypy
+
+i3/
+qtile/
+starship.toml

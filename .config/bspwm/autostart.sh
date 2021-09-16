@@ -16,7 +16,7 @@ xsetroot -cursor_name left_ptr &
 
 # Wallpaper
 # nitrogen --restore &
-feh --bg-fill /home/zim/.dotfiles/wallpapers/firewatch.jpg &
+feh --bg-fill /home/zim/.dotfiles/wallpapers/island-sunset.jpg &
 
 # Programs
 picom &
